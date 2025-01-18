@@ -33,6 +33,54 @@ function BottomNavigation() {
 
           </div>
       </div>
+      <div
+        onClick={() => navigate("/earn")}
+        className={`flex flex-col items-center justify-center w-14 h-14 rounded-lg ${
+          currentScreen === "/earn" ? "bg-black" : "bg-gray-900"
+  }`}
+        >
+          <div className='flex flex-col items-center justify-center'>
+            <img className='w-7 h-7 object-contain' src={money} alt='E' />
+            <p className='text-xs text-center'>Earn</p>
+
+          </div>
+      </div> 
+      <div
+        onClick={() => navigate("/shares")}
+        className={`flex flex-col items-center justify-center w-14 h-14 rounded-lg ${
+          currentScreen === "/shares" ? "bg-black" : "bg-gray-900"
+  }`}
+        >
+          <div className='flex flex-col items-center justify-center'>
+            <img className='w-7 h-7 object-contain' src={friends} alt='R' />
+            <p className='text-xs text-center'>Referrals</p>
+
+          </div>
+      </div>
+       <div
+        onClick={() => navigate("/daily")}
+        className={`flex flex-col items-center justify-center w-14 h-14 rounded-lg ${
+          currentScreen === "/daily" ? "bg-black" : "bg-gray-900"
+  }`}
+        >
+          <div className='flex flex-col items-center justify-center'>
+            <img className='w-7 h-7 object-contain' src={daily} alt='D' />
+            <p className='text-xs text-center'>Daily</p>
+
+          </div>
+      </div>
+       <div
+        onClick={() => navigate("/airdrop")}
+        className={`flex flex-col items-center justify-center w-14 h-14 rounded-lg ${
+          currentScreen === "/airdrop" ? "bg-black" : "bg-gray-900"
+  }`}
+        >
+          <div className='flex flex-col items-center justify-center'>
+            <img className='w-7 h-7 object-contain' src={blockchain} alt='H' />
+            <p className='text-xs text-center'>Airdrop</p>
+
+          </div>
+      </div>
     </nav>
   )
 }

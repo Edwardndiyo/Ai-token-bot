@@ -2,7 +2,7 @@ import React from 'react'
 
 function Daily() {
   return (
-    <div>Dily</div>
+    <div>Daily</div>
   )
 }
 
