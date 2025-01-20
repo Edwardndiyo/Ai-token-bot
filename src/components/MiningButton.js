@@ -256,9 +256,25 @@ function MiningButton() {
 
   return (
     <div className='relative w-full mx-4'>
-      
+      <div className='absolute -top-12 left-0 text-white text-lg bg-gray-800 p-2 rounded '>
+        Balance: B {formatNumber(user.balance)}
+      </div>
+
+{!showUpgrade && !user.isMining && (
+  <button
+  onClick={() => setShowUpgrade(true)}
+  className={`absolute -top-3 right-0 text-xs text-black font-bold py-1 px-2 rounded  ${
+    calculate.canUpgrade
+      ? "bg-green-600 hover:bg-green-700"
+      : "bg-gray-400 cursor-not-allowed"
+  }`}
+  disabled={!calculate.canUpgrade}
+  >
+    {user.mineRate < MAX_MINE_RATE ? "Upgrade" : "Max Upgraded"}
+  </button>
+)}
     </div>
-  )
+  );
 }
 
 export default MiningButton

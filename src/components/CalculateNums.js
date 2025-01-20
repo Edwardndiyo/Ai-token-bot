@@ -52,9 +52,145 @@ function CalculateNums() {
         return Math.round(minedValue * 1000) / 1000;
     };
 
-  return (
-    <div>CalculateNums</div>
-  )
+    const calculateRemainingTime = (miningStartedTime) => {
+        if (!miningStartedTime) {
+            return {hours: 6, minutes: 0, seconds: 0 };
+        }
+
+        const now = Date.now();
+        const totalMiningTime = 6 * 60 * 60 * 1000;
+        const endTime = miningStartedTime + totalMiningTime;
+        const remainingTime = Math.max(endTime - now, 0);
+
+        if (remainingTime === 0) {
+            return { hours: 0, minutes: 0, seconds: 0  };
+        }
+
+        const hours = Math.floor(remainingTime / (60 * 60 * 1000));
+        const minutes = Math.floor(
+            (remainingTime % (60 * 60 * 1000))
+        );
+        const seconds = Math.floor((remainingTime % (60 * 1000)) / 1000);
+
+        return { hours, minutes, seconds };
+    };
+
+    const addPrecise = (a, b) => {
+        return parseFloat((a + b).toFixed(3));
+    };
+
+    const getUpgradeStep = (rate) => {
+        if (rate < 0.01) return 0.001;
+        if( rate < 0.1) return 0.01;
+        if (rate < 1) return 0.1;
+        return Math.pow(10, Map.floor(Math.log10(rate))) ;
+    };
+
+    const getUpgradePrice = (nextRate) => {
+        return nextRate * 100000;
+    };
+
+    const getNextUpgradeRate = () => {
+        const step = getUpgradeStep(user.mineRate);
+        return Math.min(addPrecise(user.mineRate, step), MAX_MINE_RATE);
+    };
+
+    const canUpgrade = 
+        user.balance >= getUpgradePrice(getNextUpgradeRate()) && 
+        user.mineRate < MAX_MINE_RATE;
+
+        useEffect(() => {
+            let worker = null;
+
+            const updateFunction = () => {
+                const updateProgress = () => {
+                    const currentProgress = calculateProgress(user.miningStartedTime);
+                    setProgress(currentProgress);
+                };
+
+                const updateMinedValue = () => {
+                    const currentMinedValue = calculateMinedValue(
+                        user.miningStartedTime,
+                        user.mineRate
+                    );
+                    setMined(currentMinedValue);
+                    setWaiting(false);
+                };
+
+                const updateRemainingTime = () => {
+                    const timeleft = calculateRemainingTime(user.miningStartedTime);
+                    setRemainingTime(timeleft);
+
+                    if(
+                        timeleft.hours === 0 &&
+                        timeleft.minutes === 0 &&
+                        timeleft.seconds === 0
+                    ) {
+                        setRemainingTime({hours: 0, minutes: 0 , seconds: 0 });
+                    }
+                };
+
+                updateProgress();
+                updateMinedValue();
+                updateRemainingTime();
+            };
+
+            if (user.isMining && user.miningStartedTime ) {
+                const workerCode  = `
+                let interval = null;
+                self.onmessage = function(e) {
+                if (e.data === 'start') {
+                interval = setInterval(() => {
+                    self.postMessage('tick');
+                    }, 1000);
+                    } else if (e.data === 'stop') {
+                     clearInterval(interval);
+                     }
+                     };
+                `;
+
+                const blob = new Blob([workerCode], {type : "application/javascript"});
+                worker = new Worker(URL.createObjectURL(blob));
+
+                worker.onmessage = updateFunction;
+                worker.postMessage("start");
+            } else {
+                setProgress(0);
+                setMined(0);
+                setRemainingTime({hours: 6, minutes: 0, seconds: 0});
+                setCanClaim(false);
+                setWaiting(false);
+            }
+
+            return () => {
+                if (worker) {
+                    worker.postMessage("stop");
+                    worker.terminate();
+                }
+            };
+        }, [user.isMining, user.miningStartedTime, user.mineRate]);
+        
+
+        useEffect (() => {
+            if(!waiting) {
+                dispatch(
+                    setCalculated({
+                        mined: mined,
+                        remainingTime: remainingTime,
+                        progress: progress,
+                        canClaim: canClaim,
+                        canUpgrade: canUpgrade,
+                    })
+                );
+            }
+        }, [waiting, mined, remainingTime, progress, canClaim, canUpgrade, dispatch]);
+
+
+    
+  return 
+    <> 
+    </>
+  
 }
 
 export default CalculateNums

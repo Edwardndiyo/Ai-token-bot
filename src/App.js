@@ -42,7 +42,7 @@ function App() {
 
   const processLinks = (links) => {
     if (!links) return {};
-    return Object.entries(links).reduce((acc, [keyword$DataError, value]) => {
+    return Object.entries(links).reduce((acc, [key, value]) => {
       acc[key] = {
         ...value,
         time: value.time ? value.time.toMillis() : null,
