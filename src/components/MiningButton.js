@@ -273,8 +273,98 @@ function MiningButton() {
     {user.mineRate < MAX_MINE_RATE ? "Upgrade" : "Max Upgraded"}
   </button>
 )}
+
+{showUpgrade && (
+  <div 
+  className='absolute -bottom-[130px] left-0 w-full bg-gray-900 p-4 rounded-lg transform transition-all duration-300 ease-in-out'
+  style={{transform: "translateY(-100%)"}}
+  >
+    {user.mineRate < MAX_MINE_RATE ? (
+      <div>
+        <p className='text-white mb-2 -mt-2 text-center'>
+          Upgrade to {formatNumber(getNextUpgradeRate())} B/s
+        </p>
+        <button
+        onClick={upgradeMinerate}
+        className='w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded'
+        >
+          Cost: B {formatNumber(getUpgradePrice(getNextUpgradeRate()))}
+        </button>
+        </div>
+    ) : (
+      <div className='text-white text-center font-bold py-2'>
+        Maximum upgrade reached!
+        </div>
+    )}
+    <button
+    onClick={() => setShowUpgrade(false)}
+    className='w-full mt-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded'
+    >
+      Close
+    </button>
+    </div>
+)}
+
+<div className='bg-gray-800 p-4 rounded-lg w-full'>
+  <div className='flex justify-between items-center mb-2'>
+    <span className='text-white text-lg'>
+        {(user.isMining && "Activated") || "Deactivated"}
+    </span>
+  <div className='text-white'>
+    <span className='text-sm'>
+      {formatNumber(user.mineRate)} B/s
+    </span>
+  </div>
+  </div>
+  <div className='bg-gray-700 h-2 rounded-full mb-2'>
+    <div
+    className='bg-blue-500 -full rounded-full transition-all duration-1000'
+    style={{width: `${calculate.progress}%`}}
+    >
+    </div>
+  </div>
+  <div
+  className='flex justify-between items-center mb-4'
+  >
+    <span className='text-white text-2x1 font-bold'>
+      B {formatNumber(calculate.mined)}
+    </span>
+    <span className='text-white'>
+      {String(calculate.remainingTime.hours).padStart(2, "0")}h {" "}
+      {String(calculate.remainingTime.minutes).padStart(2, "0")}m {" "}
+      {String(calculate.remainingTime.seconds).padStart(2, "0")}s
+    </span>
+</div>
+{!user.isMining && !calculate.canClaim && (
+  <button
+  onClick={startFarming}
+  className='w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+  >
+    Start Mining
+  </button>
+)}
+{user.isMining && !calculate.canClaim && (
+  <button
+  disabled
+  className='w-full bg-gray-500 text-white font-bold py-2 px-4 rounded cursor-not-allowed'
+  >
+    Mining in Progress
+  </button>
+)}
+{calculate.canClaim && (
+  <button
+  disabled={claimDisabled}
+  onClick={claimRewards}
+  className={`w-full ${
+    claimDisabled ? "bg-gray-500" : "bg-green-500 hover:bg-green-700"
+  } text-white font-bold py-2 px-4 rounded`}
+  >
+    Claim Rewards
+  </button>
+)}
+</div>
     </div>
   );
 }
-
+ 
 export default MiningButton
