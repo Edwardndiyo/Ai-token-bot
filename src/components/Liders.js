@@ -63,7 +63,37 @@ function Liders() {
                     className={`${
                         id === user.uid && "bg-gray-900 rounded-lg"
                     } flex items-center px-2 py-1 w-full`}
-                    > </div>
+                    >
+                        <div className='flex-shrink-0 mr-4'>
+                            <div className='bg-zinc-950 flex items-center justify-center rounded-full h-8 w-8'>
+                                <p className='text-white text-sm'>{index + 1  }</p>
+                            </div>
+                        </div>
+                        <div className='flex-shrink-0 mr-2'>
+                            <div className='border-2 border-yellow-700 overflow-hidden flex items-center justify-center rounded-full bg-gray-800 h-10 w-10'>
+                                {userImage ? (
+                                    <img
+                                    className='w-9 h-9 object-contain'
+                                    src={userImage}
+                                    alt={firstName[0].toUpperCase()}
+                                    />
+                                     
+                                ) : (
+                                    <div className='text-x1 text-white bg-black w-14 h-14 flex items-center justify-center'>
+                                        {firstName[0].toUpperCase()}
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <div className='flex-grow min-w-0 flex items-center justify-between'>
+                            <p className='text-white font-bold truncate mr-2'>
+                                {firstName} {lastName}
+                            </p>
+                            <p className='text-white whitespace-nowrap flex-shrink-0'>
+                                B {formatNumber(balance)}
+                            </p>
+                        </div>
+                     </div>
                 )
             )}
         </div>
