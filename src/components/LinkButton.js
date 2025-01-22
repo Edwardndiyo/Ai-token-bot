@@ -205,6 +205,30 @@ function LinkButton({image, name, amount, link}) {
         <p className='text-sm'>{name} </p>
         <p className='font-bold'>+B {formatNumber(amount)} </p>
         </div>
+        {isClicked && (
+            <div>
+                {checking ? (
+                    <div className='mr2'>
+                        <LoadingModul size={26} />
+                    </div>
+                ) : (
+                    <div className='mr-1' onClick={(e) => e.stopPropagation()}>
+                        {isClaimed ? (
+                            <img 
+                            className='w-12 h-12 object-contain'
+                            src={checkLogo}
+                            alt='C'
+                            />
+                        ) : canClaim ? (
+                            <button onClick={claimRewards}
+                            className='bg-blue-500 hover:bg-blue-700 text-white text-sm font-bold px-2 py-1 rounded'>
+                                Claim
+                            </button>
+                        ) : null}
+                    </div>
+                )}
+            </div>
+        )}
     </div>
   )
 }

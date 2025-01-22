@@ -29,7 +29,7 @@ import {
  import { selectCoinShow } from './features/coinShowSlice';
  import { setTopUsers } from './features/topUsersSlice';
  import Loading from "./screens/Loading";
-
+import GenerateTopUsers from "./components/GenerateTopUsers";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +50,10 @@ function App() {
       return acc;
     }, {});
   };
+
+  // useEffect(() => {
+  //   GenerateTopUsers(70); //give a value here to generate this number of random users
+  // }, []);
 
   useEffect(() => {
     const tg = window.Telegram.WebApp;
