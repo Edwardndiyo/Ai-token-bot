@@ -1,5 +1,5 @@
 import React from 'react';
-import gift from "../assets/9.jpeg";
+import gift from "../assets/Golden_Coins_3d_Vector__Golden_Bitcoin_Coin_3d_Rendering__Coin__Bitcoin__Btc_PNG_Image_For_Free_Download-removebg-preview.png";
 import copy from "clipboard-copy";
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from '../features/userSlice';
@@ -70,7 +70,7 @@ function Referrals() {
         </div>
         <div className='mx-3 w-full'>
           <p className='text-lg font-bold'>Invite a friend</p>
-          <p className='font-bold'>+B 100,00</p>
+          <p className='font-bold'>+₩ 100.00</p>
         </div>
       </div>
       <div className='bg-gray-800 mt-6 mx-4 rounded-lg p-2 flex items-center'>
@@ -79,7 +79,7 @@ function Referrals() {
         </div>
         <div className='mx-3 w-full'>
           <p className='text-lg font-bold'>Invite a friend with Telegram Premium</p>
-          <p className='font-bold'>+B 500,00</p>
+          <p className='font-bold'>+₩ 500.00</p>
         </div>
       </div>
       <div className='bg-gray-800 mt-6 mx-4 rounded-lg p-2'>

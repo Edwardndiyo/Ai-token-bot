@@ -257,7 +257,7 @@ function MiningButton() {
   return (
     <div className='relative w-full mx-4'>
       <div className='absolute -top-12 left-0 text-white text-lg bg-gray-800 p-2 rounded '>
-        Balance: B {formatNumber(user.balance)}
+        Balance: ₩ {formatNumber(user.balance)}
       </div>
 
 {!showUpgrade && !user.isMining && (
@@ -288,7 +288,7 @@ function MiningButton() {
         onClick={upgradeMinerate}
         className='w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded'
         >
-          Cost: B {formatNumber(getUpgradePrice(getNextUpgradeRate()))}
+          Cost: ₩ {formatNumber(getUpgradePrice(getNextUpgradeRate()))}
         </button>
         </div>
     ) : (
@@ -312,7 +312,7 @@ function MiningButton() {
     </span>
   <div className='text-white'>
     <span className='text-sm'>
-      {formatNumber(user.mineRate)} B/s
+      {formatNumber(user.mineRate)} ₩/s
     </span>
   </div>
   </div>
@@ -327,7 +327,7 @@ function MiningButton() {
   className='flex justify-between items-center mb-4'
   >
     <span className='text-white text-2x1 font-bold'>
-      B {formatNumber(calculate.mined)}
+    ₩ {formatNumber(calculate.mined)}
     </span>
     <span className='text-white'>
       {String(calculate.remainingTime.hours).padStart(2, "0")}h {" "}

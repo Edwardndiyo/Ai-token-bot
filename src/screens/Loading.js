@@ -1,6 +1,6 @@
 import React from "react";
 import LoadingModul from "../components/LoadingModul";
-import backgroundImage from "../assets/7b0e5ab7-38f9-40a4-a958-6c0d9b389d79.jpeg";
+import backgroundImage from "../assets/6010313389789791494.jpg";
 
 function Loading () {
     return (

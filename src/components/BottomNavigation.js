@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import money from "../assets/0.jpeg";
-import friends from "../assets/1.jpeg";
-import daily from "../assets/3.jpeg";
-import blockchain from "../assets/47f36f7e-c5fd-4d19-9297-1e8c74609bf7.jpeg"
-import home from "../assets/6.jpeg";
+import money from "../assets/997fbe3d-a2db-4d57-b67f-cb8883ee0a00-removebg-preview.png";
+import friends from "../assets/Referrals__They_are_the_best_compliment_to_our_-removebg-preview.png";
+import daily from "../assets/Download_checklist_clipboard_line_and_fill_style_icon_for_free-removebg-preview.png";
+import blockchain from "../assets/Vector_Cartoon_Airdrop_Eating_Chicken_Game_Gift_Pack_PNG_Images___Vector__Cartoon_Gift__Gift_Package_PNG_Transparent_Background_-_Pngtree-removebg-preview.png"
+import home from "../assets/Home_Icon_Clipart_Hd_PNG__Vector_Home_Icon__Home_Icons__Home_Clipart__Home_Icon_PNG_Image_For_Free_Download-removebg-preview.png";
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 

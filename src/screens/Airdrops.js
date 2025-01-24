@@ -1,15 +1,6 @@
 import React from 'react'
-import blockchain from "../assets/47f36f7e-c5fd-4d19-9297-1e8c74609bf7.jpeg";
+import blockchain from "../assets/5aff6077-b5ec-4adc-ae2d-9e5e77e49eda-removebg-preview.png";
 
- 
-
-// function airdrops() {
-//   return (
-//     <div>airdrops</div>
-//   )
-// }
-
-// export default airdrops
 
 function Daily() {
   return (

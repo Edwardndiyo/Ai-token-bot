@@ -90,7 +90,7 @@ function Liders() {
                                 {firstName} {lastName}
                             </p>
                             <p className='text-white whitespace-nowrap flex-shrink-0'>
-                                B {formatNumber(balance)}
+                            ₩ {formatNumber(balance)}
                             </p>
                         </div>
                      </div>

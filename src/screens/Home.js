@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { selectUser } from '../features/userSlice'
 import LoadingModul from '../components/LoadingModul';
 import { selectCalculated } from '../features/calculateSlice'
-import backgroundImage from '../assets/7.png';
+import backgroundImage from '../assets/6010313389789791494.jpg';
 
 
 function Home() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import money from "../assets/6.jpeg";
+import money from "../assets/5aff6077-b5ec-4adc-ae2d-9e5e77e49eda-removebg-preview.png";
 import LinkButton from "../components/LinkButton";
 import { selectUser } from '../features/userSlice';
 
