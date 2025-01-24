@@ -11,7 +11,7 @@ function Referrals() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
-  const refLink = `https://t.me/Coach_ED_AI_Bot?start=ref_${user.uid}`;
+  const refLink = `https://t.me/WallStreat_TokenBot?start=ref_${user.uid}`;
   const messageToRef = "Join us on Coach Ed AI Token and let's earn more coins together 🚀! Use my link to join and get more coins. 💰";
 
   const handleCopy = () => {

@@ -70,7 +70,7 @@ function BottomNavigation() {
 
           </div>
       </div>
-       <div
+       {/* <div
         onClick={() => navigate("/airdrop")}
         className={`flex flex-col items-center justify-center w-14 h-14 rounded-lg ${
           currentScreen === "/airdrop" ? "bg-black" : "bg-gray-900"
@@ -81,7 +81,7 @@ function BottomNavigation() {
             <p className='text-xs text-center'>Airdrop</p>
 
           </div>
-      </div>
+      </div> */}
       <div
         onClick={() => navigate("/XChange")}
         className={`flex flex-col items-center justify-center w-14 h-14 rounded-lg ${
