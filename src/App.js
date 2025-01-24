@@ -8,6 +8,8 @@ import Airdrops from './screens/Airdrops';
 import BottomNavigation from './components/BottomNavigation';
 import CalculateNums from './components/CalculateNums';
 import CoinAnimation from  './components/CoinAnimation';
+import Share from './components/Share';
+import XChange from './screens/XChange';
 import { useEffect, useState } from 'react';
 import { selectUser, setUser } from "./features/userSlice";
 import { useDispatch, useSelector } from 'react-redux';
@@ -218,9 +220,11 @@ function App() {
       <Routes>
         <Route path='*' element={ <Loading />} />
         <Route path='/' element={<Home />} />
-       {user && calculate && <Route path='/daily' element={<Daily />} />}
+        <Route path='/XChange' element={<XChange />} />
+        {user && calculate && <Route path='/daily' element={<Daily />} />}
         { user && calculate && <Route path='/earn' element={<Earn />} />}
         { user && calculate && <Route path='/shares' element={<Referrals />} />}
+        { user && calculate && <Route path='/share' element={<Share />} />}
         { user && calculate && <Route path='/airdrop' element={<Airdrops />} />}
 
       </Routes>
